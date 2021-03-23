@@ -2,7 +2,7 @@ import os
 import csv
 
 #Path to collect data from the Resources folder
-pollData_csv = os.path.join("Resources","budget_data.csv")
+bankData_csv = os.path.join("Resources","budget_data.csv")
 
 #Calculate total number of months in the data set
 months = 0
@@ -19,7 +19,7 @@ greatest_decrease_date = ""
 greatest_decrease_amount = 0
 
 # Read csv file
-with open (pollData_csv, "r") as csvfile:
+with open (bankData_csv, "r") as csvfile:
     
     #split the data on commas
     csvreader = csv.reader(csvfile, delimiter= ",")
