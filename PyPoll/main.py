@@ -9,7 +9,13 @@ total_votes = 0
 #A complete list of candidates who received votes
 candidates = {}
 
+# The percentage of votes each candidate won
+#The total number of votes each candidate won
+candidates_percent_toal =[]
 
+# The winner of the election based on popular vote.
+winning_percent = 0
+winner = []
 
 with open (pollData_csv, "r") as csvfile:
 
@@ -23,35 +29,30 @@ with open (pollData_csv, "r") as csvfile:
             candidates[row[2]] += 1
         if row[2] not in candidates.keys():
             candidates.update({row[2]:1})
-        
-    print(candidates)
+    for key in candidates:
+        vote_percentage = round(((candidates[key]/total_votes) * 100),2)
+        candidates_percent_toal.append(f"{key}: {vote_percentage}% ({candidates[key]})")
+        if vote_percentage > winning_percent:
+            winning_percent = vote_percentage
+            winner = key
 
-
-
-
-
-
- # The percentage of votes each candidate won
-
-  #The total number of votes each candidate won
-
-  # The winner of the election based on popular vote.
+  
 
 #As an example, your analysis should look similar to the one below:
 
-  #output = (f'''
-  #Election Results
-  #-------------------------
- # Total Votes: 3521001
-  #-------------------------
- # Khan: 63.000% (2218231)
-  #Correy: 20.000% (704200)
-  #Li: 14.000% (492940)
-  #O'Tooley: 3.000% (105630)
-  #-------------------------
-  #Winner: Khan
- # -------------------------
-  #''')
+output = (f"""
+Election Results
+-------------------------
+Total Votes: {total_votes}
+-------------------------
+{candidates_percent_toal}
+-------------------------
+Winner: {winner}
+-------------------------
+""")
+print(output)
+
+
   #In addition, your final script should both print the analysis to the terminal and 
 
   #export a text file with the results
