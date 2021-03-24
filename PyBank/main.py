@@ -43,17 +43,24 @@ with open (bankData_csv, "r") as csvfile:
         previous_row = row
         
 sum_profit_loss = sum(profit_loss)
-average_change = (sum(change) / len(change)      
-
-#print analysis to terminal and and export a test file with the resutls.
+average_change = sum(change) / len(change)
+avg_change_rounded = round(average_change, 2)      
 
 output = (f'''
 Financial Analysis
 ----------------------------
 Total Months: {months}
 Total: ${sum_profit_loss}
-Average  Change: $-2315.12 ${average_change}
+Average  Change: ${avg_change_rounded}
 Greatest Increase in Profits: {greatest_increase_date} (${greatest_increase_amount})
-Greatest Decrease in Profits: Sep-2013 {greatest_decrease_date} (${greatest_decrease_amount})
+Greatest Decrease in Profits:  {greatest_decrease_date} (${greatest_decrease_amount})
 ''')
+#print analysis to terminal 
 print(output)
+
+#export a test file with the resutls
+analysis = os.path.join("Analysis", "analysis.txt")
+
+with open(analysis, "w", ) as writer:
+    writer.writelines(output)
+    
