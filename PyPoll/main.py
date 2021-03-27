@@ -36,10 +36,6 @@ with open (pollData_csv, "r") as csvfile:
             winning_percent = vote_percentage
             winner = key
 
-  
-
-#As an example, your analysis should look similar to the one below:
-
 output = (f"""
 Election Results
 -------------------------
@@ -53,12 +49,12 @@ Winner: {winner}
 print(output)
 
 
-  #In addition, your final script should both print the analysis to the terminal and 
+#In addition, your final script should both print the analysis to the terminal and 
 
-  #export a text file with the results
+#export a text file with the results
 
-  #analysis = os.path.join("Analysis", "analysis.txt")
+analysis = os.path.join("Analysis", "analysis.txt")
 
-  #with open(analysis, "w") as writer:
-      #writer.writelines()
+with open(analysis, "w") as writer:
+    writer.writelines(output)
 
